@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+               th:replace="normal/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>Home Page</title>
+</head>
+<body>
+	<section>
+	  
+	  
+	      <div class="container">
+	     <div class="card">
+	     
+	       <div class="card-body">
+	       
+	       <div class="container text-center">
+	       
+	           <img src="" style="height: 200px; width: 200px;"
+						class="my_profile_picture" th:src="@{'/img/'+${user.imageUrl}}"
+						alt="profile photo" />
+	           
+	       </div>
+	       
+	      
+	      <h1 class="text-center mt-3" th:text="${user.user_name}"></h1> 
+	       
+	        <div class="table-responsive">
+	          <table class="table table-striped mt-4 ml-3 mr-3 text-center">
+						<thead>
+							<tr>
+								<th class="table-active" scope="col">#USERID</th>
+								<th   class = "table-active" scope="col">SCM20<span
+									th:text="${user.id}"></span></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th  class="table-info" scope="row">Email</th>
+								<td class="table-info" ><span th:text="${user.email}"></span></td>
+
+							</tr>
+
+							<tr>
+								<th class="table-secondary" scope="row">Role</th>
+								<td class="table-secondary" ><span th:text="${user.role}"></span></td>
+
+							</tr>
+
+							<tr>
+								<th class="table-danger"  scope="row">Account Active</th>
+								<td class="table-danger"><span th:text="${user.enabled}"></span></td>
+
+							</tr>
+							
+							<tr>
+								<th class="table-active"scope="row">About</th>
+								<td class="table-active" ><span th:text="${user.about}"></span></td>
+
+							</tr>
+							
+							
+								
+
+					</div>
+
+						</tbody>
+
+					</table>
+					</div>
+					
+					<div class="container mt-4 text-center">
+					<button th:onclick="|deleteContact(${user.id})|"
+							class="btn btn-danger btn-sm ">Delete</button>
+						
+						
+						<form method="post" th:action="@{'/user/update-contact/'+${user.id}} " class="mt-2">
+								         <button type="submit" class="btn btn-primary btn-sm">Update</button></td>
+								</form>
+	  
+	       
+	       </div>
+	     
+	     </div>
+	  
+	  </div>
+	  <script>
+	      $(document).ready(() => {
+	      $(".item").removeClass("active");
+	      $("#profile-link").addClass("active");
+	      });
+	   </script>
+	  
+	</section>
+</body>
+</html>
